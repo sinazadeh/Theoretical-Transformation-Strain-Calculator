@@ -6,3 +6,7 @@ To utilize the sample code effectively, the following are required:
 - [Python 3](https://www.python.org/downloads/)
 - [NumPy](https://numpy.org/install/)
 - [SymPy](https://docs.sympy.org/latest/install.html)
+
+## Usage
+
+Explore the sample codes provided in [main.ipynb](main.ipynb) to get started.
