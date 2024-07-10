@@ -5,9 +5,9 @@
 # -------------------------------------
 
 
-import sympy as sp
 import numpy as np
 import pandas as pd
+import sympy as sp
 from CBFV import composition
 from functools import reduce
 import contextlib
@@ -32,8 +32,7 @@ class LambdaCalculator:
         a, b, c = sorted([a, b, c])
         B_matrix = np.array(
             [
-                [a / a0, 0, (np.sqrt(2) * c *
-                             np.cos(np.radians(beta))) / (2 * a0)],
+                [a / a0, 0, (np.sqrt(2) * c * np.cos(np.radians(beta))) / (2 * a0)],
                 [0, (np.sqrt(2) * b) / (2 * a0), 0],
                 [0, 0, (np.sqrt(2) * c * np.sin(np.radians(beta))) / (2 * a0)],
             ]
@@ -82,8 +81,7 @@ class Lambda2Model:
             self.determine_type_and_lambda
         )
 
-        self.df["Predicted_Transformation_Type"] = type_lambda_df.apply(
-            lambda x: x[0])
+        self.df["Predicted_Transformation_Type"] = type_lambda_df.apply(lambda x: x[0])
         self.df["Predicted_Lambda2"] = type_lambda_df.apply(lambda x: x[1])
         try:
             self.df = self.df[
@@ -219,8 +217,7 @@ class TransformationStrainCalculator:
         ]
 
         # Solve the system of equations
-        solutions = sp.solve(
-            equations, (B11, B12, B13, B21, B22, B23, B31, B32, B33))
+        solutions = sp.solve(equations, (B11, B12, B13, B21, B22, B23, B31, B32, B33))
 
         # Create the solution matrix
         solution_matrix = sp.Matrix(
@@ -422,34 +419,27 @@ class deformation_matrices:
             a * sp.sin(beta),
         )
         eq3 = sp.Eq(
-            B31 * a0 * a_lc_1[0] + B32 * a0 *
-            a_lc_1[1] + B33 * a0 * a_lc_1[2], 0
+            B31 * a0 * a_lc_1[0] + B32 * a0 * a_lc_1[1] + B33 * a0 * a_lc_1[2], 0
         )
 
         eq4 = sp.Eq(
-            B11 * a0 * a_lc_2[0] + B12 * a0 *
-            a_lc_2[1] + B13 * a0 * a_lc_2[2], 0
+            B11 * a0 * a_lc_2[0] + B12 * a0 * a_lc_2[1] + B13 * a0 * a_lc_2[2], 0
         )
         eq5 = sp.Eq(
-            B21 * a0 * a_lc_2[0] + B22 * a0 *
-            a_lc_2[1] + B23 * a0 * a_lc_2[2], 0
+            B21 * a0 * a_lc_2[0] + B22 * a0 * a_lc_2[1] + B23 * a0 * a_lc_2[2], 0
         )
         eq6 = sp.Eq(
-            B31 * a0 * a_lc_2[0] + B32 * a0 *
-            a_lc_2[1] + B33 * a0 * a_lc_2[2], b
+            B31 * a0 * a_lc_2[0] + B32 * a0 * a_lc_2[1] + B33 * a0 * a_lc_2[2], b
         )
 
         eq7 = sp.Eq(
-            B11 * a0 * a_lc_3[0] + B12 * a0 *
-            a_lc_3[1] + B13 * a0 * a_lc_3[2], c
+            B11 * a0 * a_lc_3[0] + B12 * a0 * a_lc_3[1] + B13 * a0 * a_lc_3[2], c
         )
         eq8 = sp.Eq(
-            B21 * a0 * a_lc_3[0] + B22 * a0 *
-            a_lc_3[1] + B23 * a0 * a_lc_3[2], 0
+            B21 * a0 * a_lc_3[0] + B22 * a0 * a_lc_3[1] + B23 * a0 * a_lc_3[2], 0
         )
         eq9 = sp.Eq(
-            B31 * a0 * a_lc_3[0] + B32 * a0 *
-            a_lc_3[1] + B33 * a0 * a_lc_3[2], 0
+            B31 * a0 * a_lc_3[0] + B32 * a0 * a_lc_3[1] + B33 * a0 * a_lc_3[2], 0
         )
 
         solutions = sp.solve(
@@ -478,7 +468,7 @@ class deformation_matrices:
                 solution_matrices.append("No unique solution")
         print("B19':")
         for i, solution_matrix in enumerate(solution_matrices):
-            label = f"V{(i // 2) + 1}" + ("'" if i % 2 else "")
+            label = f"B{(i // 2) + 1}" + ("'" if i % 2 else "")
             print(f"{label}:")
             if isinstance(solution_matrix, str):
                 print(solution_matrix)
@@ -496,7 +486,7 @@ class deformation_matrices:
                 solution_matrices.append("No unique solution")
         print("B19:")
         for i, solution_matrix in enumerate(solution_matrices):
-            label = f"V{(i+1)}"
+            label = f"B{(i+1)}"
             print(f"{label}:")
             if isinstance(solution_matrix, str):
                 print(solution_matrix)
