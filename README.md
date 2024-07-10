@@ -10,3 +10,9 @@ To utilize the sample code effectively, the following are required:
 ## Usage
 
 Explore the sample codes provided in [main.ipynb](main.ipynb) to get started.
+
+## Citing
+
+If this code or the accompanying dataset proves beneficial for your research or work, please cite our original paper. Acknowledging this source helps promote further research in this field and recognizes the efforts invested in this repository.
+
+> 
